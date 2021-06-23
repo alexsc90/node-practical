@@ -6,44 +6,36 @@ const controller = require('./index');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', (req, res, next) => {
     controller.list()
         .then((list) => {
             response.success(req, res, list, 200);
         })
-        .catch(e => {
-            response.error(req, res, e.message, 500)
-        })
+        .catch(next);
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', (req, res, next) => {
     controller.get(req.params.id)
         .then((user) => {
             response.success(req, res, user, 200);
         })
-        .catch(err => {
-            response.error(req, res, err.message, 500)
-        })
+        .catch(next)
 });
 
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => {
     controller.upsert(req.body)
         .then((user) => {
             response.success(req, res, user, 201);
         })
-        .catch(e => {
-            response.error(req, res, e.message, 500);
-        });
+        .catch(next);
 });
 
-router.put('/', secure('update'), (req, res) => {
+router.put('/', secure('update'), (req, res, next) => {
     controller.upsert(req.body)
         .then((user) => {
             response.success(req, res, user, 201);
         })
-        .catch(e => {
-            response.error(req, res, e.message, 500);
-        });
+        .catch(next);
 });
 
 module.exports = router;

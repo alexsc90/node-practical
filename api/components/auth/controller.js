@@ -10,12 +10,12 @@ module.exports = function(injectedStore) {
     }
 
     async function login(username, password) {
-        const data = await store.query(TABLE, {username: username });
+        const data = await store.query(TABLE, { username: username });
 
         return bcrypt.compare(password, data.password)
             .then(areEqual => {
                 if(areEqual === true) {
-                    return auth.sign(data);
+                    return auth.sign({ ...data });
                 } else {
                     throw new Error('Invalid info')
                 }
