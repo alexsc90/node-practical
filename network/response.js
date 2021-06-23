@@ -17,5 +17,5 @@ exports.error = function (req, res, message, status) {
         error: false,
         status: status,
         body: message,
-    })
+    });
 }

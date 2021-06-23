@@ -32,7 +32,7 @@ async function query(table, q) {
     let keys = Object.keys(q)
     let key = keys[0]
     
-    return collection.filter( item => item[key] === q[key])[0] || null; 
+    return collection.filter( item => item[key] === q[key] )[0] || null; 
 }
 
 module.exports = {
