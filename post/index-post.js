@@ -11,8 +11,7 @@ app.use(bodyParser.json());
 
 //Routes
 
-app.use('/post', post);
-
+app.use('/api/post', post);
 
 app.use(errors);
 
