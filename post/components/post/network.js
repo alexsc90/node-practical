@@ -10,7 +10,7 @@ router.get('/', auth('list'), list);
 router.get('/like', auth('list_own'), postsLiked);
 router.get('/:id', auth('get'), get);
 router.post('/', auth('add'), upsert);
-router.put('/', auth('update'), { owner: 'user'}, upsert);
+router.put('/', auth('update'), { owner: 'user' }, upsert);
 router.post('/:id/like', auth('add'), like);
 router.get('/:id/like', auth('list'), postLikers);
 
@@ -23,7 +23,7 @@ function list(req, res, next) {
 };
 
 function get(req, res, next) {
-    Controller.list(req.params.id)
+    Controller.get(req.params.id)
         .then((post) => {
             response.success(req, res, post, 200);
         })

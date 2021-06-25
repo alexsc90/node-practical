@@ -1,5 +1,5 @@
 const auth = require('../../../auth');
-const Controller = require('.index');
+const Controller = require('./index');
 
 function checkAuth (action, options) {
     async function middleware(req, res, next) {

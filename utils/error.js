@@ -5,7 +5,7 @@ function err(message, code) {
         e.statusCode = code;
     }
 
-    return e
+    return e;
 }
 
 module.exports = err;

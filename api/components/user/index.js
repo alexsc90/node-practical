@@ -1,4 +1,5 @@
 const config = require('../../../config');
+
 let store, cache;
 
 if(config.remoteDB === true) {

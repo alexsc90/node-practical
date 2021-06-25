@@ -13,14 +13,14 @@ module.exports = function(injectedStore) {
         const data = await store.query(TABLE, { username: username });
 
         return bcrypt.compare(password, data.password)
-            .then(areEqual => {
+            .then((areEqual) => {
                 if(areEqual === true) {
                     return auth.sign({ ...data });
                 } else {
                     throw new Error('Invalid info')
                 }
-            })
-    }
+            });
+    };
 
     async function upsert(data) {
         const authData = {
